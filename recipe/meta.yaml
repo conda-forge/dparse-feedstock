@@ -1,17 +1,17 @@
 {% set name = "dparse" %}
-{% set version = "0.4.1" %}
+{% set version = "0.5.0" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 00a5fdfa900629e5159bf3600d44905b333f4059a3366f28e0dbd13eeab17b19
+  sha256: db349e53f6d03c8ee80606c49b35f515ed2ab287a8e1579e2b4bdf52b12b1530
 
 build:
   number: 0
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
+  script: '{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv '
   noarch: python
 
 requirements:
