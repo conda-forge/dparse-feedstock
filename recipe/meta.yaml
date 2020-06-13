@@ -11,31 +11,41 @@ source:
 
 build:
   number: 0
-  script: '{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv '
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
   noarch: python
 
 requirements:
   host:
     - pip
-    - python
+    - python >=3.5
   run:
     - packaging
-    - python
+    - python >=3.5
     - pyyaml
-    - six
+    - toml
 
 test:
+  source_files:
+    - tests
+  requires:
+    - pip
+    - pytest
+    - pipenv
   imports:
     - dparse
+  commands:
+    - python -m pip check
+    - pytest -vv
 
 about:
-  home: https://github.com/jayfk/dparse
+  home: https://github.com/pyupio/dparse
   license: MIT
   license_family: MIT
   license_file: LICENSE
   summary: A parser for Python dependency files
-  dev_url: https://github.com/jayfk/dparse
+  dev_url: https://github.com/pyupio/dparse
 
 extra:
   recipe-maintainers:
     - jkornblum
+    - bollwyvl
