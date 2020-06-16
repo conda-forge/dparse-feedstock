@@ -1,41 +1,51 @@
 {% set name = "dparse" %}
-{% set version = "0.4.1" %}
+{% set version = "0.5.1" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 00a5fdfa900629e5159bf3600d44905b333f4059a3366f28e0dbd13eeab17b19
+  sha256: a1b5f169102e1c894f9a7d5ccf6f9402a836a5d24be80a986c7ce9eaed78f367
 
 build:
   number: 0
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
   noarch: python
 
 requirements:
   host:
     - pip
-    - python
+    - python >=3.5
   run:
     - packaging
-    - python
+    - python >=3.5
     - pyyaml
-    - six
+    - toml
 
 test:
+  source_files:
+    - tests
+  requires:
+    - pip
+    - pytest
+    - pipenv
   imports:
     - dparse
+  commands:
+    - python -m pip check
+    - pytest -vv
 
 about:
-  home: https://github.com/jayfk/dparse
+  home: https://github.com/pyupio/dparse
   license: MIT
   license_family: MIT
   license_file: LICENSE
   summary: A parser for Python dependency files
-  dev_url: https://github.com/jayfk/dparse
+  dev_url: https://github.com/pyupio/dparse
 
 extra:
   recipe-maintainers:
     - jkornblum
+    - bollwyvl
