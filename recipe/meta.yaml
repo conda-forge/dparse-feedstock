@@ -1,18 +1,20 @@
-{% set name = "dparse" %}
-{% set version = "0.5.1" %}
+{% set version = "0.5.2" %}
 
 package:
-  name: {{ name|lower }}
+  name: dparse
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: a1b5f169102e1c894f9a7d5ccf6f9402a836a5d24be80a986c7ce9eaed78f367
+  url: https://pypi.io/packages/source/d/dparse/dparse-{{ version }}.tar.gz
+  sha256: c348994a1f41c85f664d8f5a47442647bc4e22c5af5b1b26ef29aff0fa5dddcd
 
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . --no-deps -vv
   noarch: python
+  script_env:
+    # for `pipenv`: doesn't like `azure`
+    - CI=true
 
 requirements:
   host:
