@@ -1,4 +1,4 @@
-{% set version = "0.6.0" %}
+{% set version = "0.6.2" %}
 
 package:
   name: dparse
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/d/dparse/dparse-{{ version }}.tar.gz
-  sha256: 57068bb61859b1676c6beb10f399906eecb41a75b5d3fbc99d0311059cb67213
+  sha256: d45255bda21f998bc7ddf2afd5e62505ba6134756ba2d42a84c56b0826614dfe
 
 build:
   number: 0
