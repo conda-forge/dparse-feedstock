@@ -19,25 +19,25 @@ build:
 requirements:
   host:
     - pip
-    - python >=3.5
+    - python >=3.6
   run:
     - packaging
-    - python >=3.5
+    - python >=3.6
     - pyyaml
-    - toml
+    - tomli
 
 test:
   source_files:
     - tests
   requires:
     - pip
-    - pytest
+    - pytest-cov
     - pipenv
   imports:
     - dparse
   commands:
-    - python -m pip check
-    - pytest -vv
+    - pip check
+    - pytest -vv --cov dparse --cov-report=term-missing:skip-covered --no-cov-on-fail --cov-fail-under=100
 
 about:
   home: https://github.com/pyupio/dparse
