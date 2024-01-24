@@ -1,4 +1,4 @@
-{% set version = "0.6.3" %}
+{% set version = "0.6.4b0" %}
 
 package:
   name: dparse
@@ -6,24 +6,21 @@ package:
 
 source:
   url: https://pypi.io/packages/source/d/dparse/dparse-{{ version }}.tar.gz
-  sha256: 27bb8b4bcaefec3997697ba3f6e06b2447200ba273c0b085c3d012a04571b528
+  sha256: f8d49b41a527f3d16a269f854e6665245b325e50e41d2c213810cb984553e5c8
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  script: {{ PYTHON }} -m pip install . --no-deps -vv --no-build-isolation
   noarch: python
-  script_env:
-    # for `pipenv`: doesn't like `azure`
-    - CI=true
 
 requirements:
   host:
+    - hatchling
     - pip
     - python >=3.6
   run:
     - packaging
     - python >=3.6
-    - pyyaml
     - tomli
 
 test:
@@ -33,6 +30,8 @@ test:
     - pip
     - pytest-cov
     - pipenv
+    - pyyaml
+    - poetry
   imports:
     - dparse
   commands:
