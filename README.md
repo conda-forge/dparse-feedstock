@@ -34,14 +34,14 @@ Current release info
 Installing dparse
 =================
 
-Installing `dparse` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `dparse` from the `conda-forge/label/dparse_beta` channel can be achieved by adding `conda-forge/label/dparse_beta` to your channels with:
 
 ```
-conda config --add channels conda-forge
+conda config --add channels conda-forge/label/dparse_beta
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `dparse` can be installed with `conda`:
+Once the `conda-forge/label/dparse_beta` channel has been enabled, `dparse` can be installed with `conda`:
 
 ```
 conda install dparse
@@ -56,26 +56,26 @@ mamba install dparse
 It is possible to list all of the versions of `dparse` available on your platform with `conda`:
 
 ```
-conda search dparse --channel conda-forge
+conda search dparse --channel conda-forge/label/dparse_beta
 ```
 
 or with `mamba`:
 
 ```
-mamba search dparse --channel conda-forge
+mamba search dparse --channel conda-forge/label/dparse_beta
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search dparse --channel conda-forge
+mamba repoquery search dparse --channel conda-forge/label/dparse_beta
 
 # List packages depending on `dparse`:
-mamba repoquery whoneeds dparse --channel conda-forge
+mamba repoquery whoneeds dparse --channel conda-forge/label/dparse_beta
 
 # List dependencies of `dparse`:
-mamba repoquery depends dparse --channel conda-forge
+mamba repoquery depends dparse --channel conda-forge/label/dparse_beta
 ```
 
 
@@ -97,7 +97,7 @@ available continuous integration services. Thanks to the awesome service provide
 [CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/),
 [Drone](https://cloud.drone.io/welcome), and [TravisCI](https://travis-ci.com/)
 it is possible to build and upload installable packages to the
-[conda-forge](https://anaconda.org/conda-forge) [Anaconda-Cloud](https://anaconda.org/)
+[conda-forge](https://anaconda.org/conda-forge) [anaconda.org](https://anaconda.org/)
 channel for Linux, Windows and OSX respectively.
 
 To manage the continuous integration and simplify feedstock maintenance
