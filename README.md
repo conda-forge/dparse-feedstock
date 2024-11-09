@@ -9,8 +9,6 @@ Package license: MIT
 
 Summary: A parser for Python dependency files
 
-Development: https://github.com/pyupio/dparse
-
 Current build status
 ====================
 
@@ -30,6 +28,10 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-dparse-green.svg)](https://anaconda.org/conda-forge/dparse) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/dparse.svg)](https://anaconda.org/conda-forge/dparse) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/dparse.svg)](https://anaconda.org/conda-forge/dparse) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/dparse.svg)](https://anaconda.org/conda-forge/dparse) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-dparse--with--all-green.svg)](https://anaconda.org/conda-forge/dparse-with-all) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/dparse-with-all.svg)](https://anaconda.org/conda-forge/dparse-with-all) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/dparse-with-all.svg)](https://anaconda.org/conda-forge/dparse-with-all) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/dparse-with-all.svg)](https://anaconda.org/conda-forge/dparse-with-all) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-dparse--with--conda-green.svg)](https://anaconda.org/conda-forge/dparse-with-conda) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/dparse-with-conda.svg)](https://anaconda.org/conda-forge/dparse-with-conda) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/dparse-with-conda.svg)](https://anaconda.org/conda-forge/dparse-with-conda) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/dparse-with-conda.svg)](https://anaconda.org/conda-forge/dparse-with-conda) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-dparse--with--pipenv-green.svg)](https://anaconda.org/conda-forge/dparse-with-pipenv) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/dparse-with-pipenv.svg)](https://anaconda.org/conda-forge/dparse-with-pipenv) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/dparse-with-pipenv.svg)](https://anaconda.org/conda-forge/dparse-with-pipenv) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/dparse-with-pipenv.svg)](https://anaconda.org/conda-forge/dparse-with-pipenv) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-dparse--with--poetry-green.svg)](https://anaconda.org/conda-forge/dparse-with-poetry) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/dparse-with-poetry.svg)](https://anaconda.org/conda-forge/dparse-with-poetry) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/dparse-with-poetry.svg)](https://anaconda.org/conda-forge/dparse-with-poetry) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/dparse-with-poetry.svg)](https://anaconda.org/conda-forge/dparse-with-poetry) |
 
 Installing dparse
 =================
@@ -41,16 +43,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `dparse` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `dparse, dparse-with-all, dparse-with-conda, dparse-with-pipenv, dparse-with-poetry` can be installed with `conda`:
 
 ```
-conda install dparse
+conda install dparse dparse-with-all dparse-with-conda dparse-with-pipenv dparse-with-poetry
 ```
 
 or with `mamba`:
 
 ```
-mamba install dparse
+mamba install dparse dparse-with-all dparse-with-conda dparse-with-pipenv dparse-with-poetry
 ```
 
 It is possible to list all of the versions of `dparse` available on your platform with `conda`:
@@ -97,7 +99,7 @@ available continuous integration services. Thanks to the awesome service provide
 [CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/),
 [Drone](https://cloud.drone.io/welcome), and [TravisCI](https://travis-ci.com/)
 it is possible to build and upload installable packages to the
-[conda-forge](https://anaconda.org/conda-forge) [Anaconda-Cloud](https://anaconda.org/)
+[conda-forge](https://anaconda.org/conda-forge) [anaconda.org](https://anaconda.org/)
 channel for Linux, Windows and OSX respectively.
 
 To manage the continuous integration and simplify feedstock maintenance
