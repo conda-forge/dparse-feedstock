@@ -1,4 +1,6 @@
 {% set version = "0.6.4" %}
+
+{% set PYTHON = PYTHON | default("$PYTHON") %}
 {% set python_min = python_min | default("3.9") %}
 
 package:
@@ -19,6 +21,7 @@ build:
 
 requirements:
   host:
+    - hatchling
     - pip
     - python {{ python_min }}
   run:
@@ -29,20 +32,77 @@ requirements:
 test:
   source_files:
     - tests
-    - python {{ python_min }}
   requires:
-    - coverage
+    - python {{ python_min }}
     - pip
-    - pipenv
-    - poetry
-    - pytest
-    - pyyaml
   imports:
     - dparse
   commands:
     - pip check
-    - coverage run --source dparse --branch -m pytest -vv --tb=long --color=yes
-    - coverager report --show-missing --skip-covered --fail-under=85
+
+outputs:
+  - name: dparse
+
+  - name: dparse-with-conda
+    build:
+      noarch: generic
+    requirements:
+      run:
+        - {{ pin_subpackage("dparse", max_pin="x.x.x") }}
+        - pyyaml
+    test:
+      requires:
+        - pip
+      commands:
+        - pip check
+
+  - name: dparse-with-pipenv
+    build:
+      noarch: generic
+    requirements:
+      run:
+        - {{ pin_subpackage("dparse", max_pin="x.x.x") }}
+        - pipenv
+    test:
+      requires:
+        - pip
+      commands:
+        - pip check
+
+  - name: dparse-with-poetry
+    build:
+      noarch: generic
+    requirements:
+      run:
+        - {{ pin_subpackage("dparse", max_pin="x.x.x") }}
+        - poetry
+    test:
+      requires:
+        - pip
+      commands:
+        - pip check
+
+  - name: dparse-with-all
+    build:
+      noarch: generic
+    requirements:
+      run:
+        - {{ pin_subpackage("dparse-with-conda", max_pin="x.x.x") }}
+        - {{ pin_subpackage("dparse-with-pipenv", max_pin="x.x.x") }}
+        - {{ pin_subpackage("dparse-with-poetry", max_pin="x.x.x") }}
+        - {{ pin_subpackage("dparse", max_pin="x.x.x") }}
+    test:
+      source_files:
+        - tests
+        - pyproject.toml
+      requires:
+        - pip
+        - pytest-cov
+      imports:
+        - dparse
+      commands:
+        - pip check
+        - pytest -vv --tb=long --color=yes --cov=dparse --cov-report=term-missing:skip-covered --no-cov-on-fail --cov-fail-under=78
 
 about:
   home: https://github.com/pyupio/dparse
@@ -50,9 +110,9 @@ about:
   license_family: MIT
   license_file: LICENSE
   summary: A parser for Python dependency files
-  dev_url: https://github.com/pyupio/dparse
 
 extra:
+  feedstock-name: dparse
   recipe-maintainers:
     - jkornblum
     - bollwyvl
