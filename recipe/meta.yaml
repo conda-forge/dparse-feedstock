@@ -1,43 +1,48 @@
 {% set version = "0.6.4" %}
+{% set python_min = python_min | default("3.9") %}
 
 package:
   name: dparse
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/d/dparse/dparse-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/d/dparse/dparse-{{ version }}.tar.gz
   sha256: 90b29c39e3edc36c6284c82c4132648eaf28a01863eb3c231c2512196132201a
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
   noarch: python
   script_env:
     # for `pipenv`: doesn't like `azure`
     - CI=true
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --disable-pip-version-check
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
   run:
     - packaging
-    - python >=3.6
-    - pyyaml
+    - python >={{ python_min }}
     - tomli
 
 test:
   source_files:
     - tests
+    - python {{ python_min }}
   requires:
+    - coverage
     - pip
-    - pytest-cov
     - pipenv
+    - poetry
+    - pytest
+    - pyyaml
   imports:
     - dparse
   commands:
     - pip check
-    - pytest -vv --cov dparse --cov-report=term-missing:skip-covered --no-cov-on-fail --cov-fail-under=85
+    - coverage run --source dparse --branch -m pytest -vv --tb=long --color=yes
+    - coverager report --show-missing --skip-covered --fail-under=85
 
 about:
   home: https://github.com/pyupio/dparse
